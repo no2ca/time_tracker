@@ -49,14 +49,15 @@ class _TimeTrackerPageState extends State<TimeTrackerPage> {
                   onPressed: () {
                     Navigator.push(context, MaterialPageRoute(builder: (context) => const TimerScreen()));
                   },
-                  icon: Icon(Icons.play_arrow),
-                  label: Text('スタート'),
+                  icon: Icon(Icons.play_arrow, size: 32),
+                  label: Text('スタート', style: TextStyle(fontSize: 20)),
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Theme.of(context).colorScheme.primary,
                     foregroundColor: Colors.white,
-                    padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+                    padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
+                    minimumSize: const Size(200, 60),
                   ),
-              ),
+                ),
                 const SizedBox(width: 20),
               ],
             ),
