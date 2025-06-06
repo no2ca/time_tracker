@@ -13,6 +13,21 @@ class _TimerScreen extends State<TimerScreen> {
   int _seconds = 0;
   Timer? _timer;
   final TextEditingController _taskNameController = TextEditingController();
+
+  @override
+  void initState() {
+    super.initState();
+    _startTimer();
+  }
+
+  void _startTimer() {
+    _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
+        setState(() {
+          _seconds++;
+        });
+      });
+    _isRunning = true;
+  }
     // タイマーボタンを押したときの挙動
   void _toggleTimer() {
     if (_isRunning) {
@@ -83,7 +98,7 @@ class _TimerScreen extends State<TimerScreen> {
                 ElevatedButton.icon(
                   onPressed: _toggleTimer,
                   icon: Icon(_isRunning ? Icons.pause : Icons.play_arrow),
-                  label: Text(_isRunning ? 'ストップ' : 'スタート'),
+                  label: Text(_isRunning ? '一時停止' : '再開'),
                   style: ElevatedButton.styleFrom(
                     backgroundColor: _isRunning ? Colors.red : Colors.green,
                     foregroundColor: Colors.white,
